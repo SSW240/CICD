@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ symbol }} Stock Price Data</title>
+</head>
+<body>
+    <h1>{{ symbol }} Stock Price Data for the Last 30 Days</h1>
+    <img src="{{ url_for('static', filename='stock_price.png') }}" alt="Stock Price Plot">
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Closing Price</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.Date }}</td>
+            <td>{{ item.Close }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
