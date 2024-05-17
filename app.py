@@ -6,7 +6,10 @@ import matplotlib
 matplotlib.use('Agg')
 from datetime import datetime, timedelta
 import os
+from flask_frozen import Freezer
+
 app = Flask(__name__)
+freezer = Freezer(app)
 
 @app.route('/')
 def home():
@@ -45,3 +48,9 @@ def data():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@freezer.register_generator
+def url_generator():
+    yield '/'
+
+freezer.freeze()
