@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          persist-credentials: false  # This ensures we use our token explicitly
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Set up Python
@@ -31,6 +31,8 @@ jobs:
         run: |
           source .venv/bin/activate
           python freeze.py
+          ls -al  # List directory contents for debugging
+          ls -al build  # List build directory contents for debugging
 
       - name: Deploy to GitHub Pages
         env:
