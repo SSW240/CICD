@@ -31,8 +31,14 @@ jobs:
         run: |
           source .venv/bin/activate
           python freeze.py
-          ls -al  # List directory contents for debugging
-          ls -al build  # List build directory contents for debugging
+          ls -al # List directory contents for debugging
+          ls -al build # List build directory contents for debugging
+
+      - name: Checkout build files from main
+        run: |
+          git fetch origin
+          git checkout main
+          ls -al build # List build directory contents for debugging
 
       - name: Deploy to GitHub Pages
         env:
