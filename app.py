@@ -25,7 +25,6 @@ def data():
     # Reset the index to convert dates to a column
     stock_data.reset_index(inplace=True)
     stock_data['Date'] = stock_data['Date'].dt.strftime('%Y-%m-%d')
-    print(stock_data.head())
     if not os.path.exists('static'):
         os.makedirs('static')
 
